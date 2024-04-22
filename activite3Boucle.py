@@ -1,6 +1,9 @@
 import unittest
 
 
+from unittest.mock import patch
+
+
 def nombreGrand():
     nombres = []  # j'initialise une liste vide pour enregistrer les nombres
     for i in range(3):  # on veut juste trois nombre
@@ -21,17 +24,28 @@ print(f"Le plus grand nombre parmi les nombres saisis est :{resultat}")
 
 
 class TestNombreGrand(unittest.TestCase):
-    def test_nombre_positif(self):
+    @patch('builtins.input', side_effect=[5, 10, 3])
+    def test_nombre_positif(self, mock_input):
         # Tester avec des nombres positifs
-        self.assertEqual(nombreGrand([5, 10, 3]), 10)
-    
-    def test_nombre_melange(self):
+        self.assertEqual(nombreGrand(), 10)
+ 
+    @patch('builtins.input', side_effect=[-2, 0, 5])
+    def test_nombre_melange(self, mock_input):
         # Tester avec des nombres négatifs et positifs
-        self.assertEqual(nombreGrand([-2, 0, 5]), 5)
+        self.assertEqual(nombreGrand(), 5)  # Le plus grand nombre est 5
     
-    def test_nombre_negatifs(self):
+    @patch('builtins.input', side_effect=[-10, -5, -20])
+    def test_nombre_negatifs(self, mock_input):
         # Tester avec des nombres négatifs uniquement
-        self.assertEqual(nombreGrand([-10, -5, -20]), -5)
+        self.assertEqual(nombreGrand(), -5)  # Le plus grand nombre est -5
+
+
+def suite():
+    suite = unittest.TestSuite()
+    suite.addTest(TestNombreGrand('test_nombre_positif'))
+    suite.addTest(TestNombreGrand('test_nombre_melange'))
+    suite.addTest(TestNombreGrand('test_nombre_negatifs'))
+    return suite
 
 
 if __name__ == '__main__':
