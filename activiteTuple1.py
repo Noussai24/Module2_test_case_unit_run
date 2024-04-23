@@ -21,7 +21,7 @@ class TestTupleCase(unittest.TestCase):
 
 
 class TestTuple(unittest.TestCase):
-    def testlistvide(self):
+    def test_list_vide(self):
         self.assertEqual(tuple_plus_grand([]),())
     
     def test_list_seul(self):
