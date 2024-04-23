@@ -1,30 +1,40 @@
 import unittest
-import activite1Tuple
 
 
+def tuple_plus_grand(list_tuples):
+    # definir un tuple vide 
+    plus_grand_tuple = ()
+    max_elements = 0
+
+    for tuple in list_tuples:
+        if len(tuple) > max_elements:
+            max_elements = len(tuple)
+            plus_grand_tuple = tuple
+    return plus_grand_tuple
 # Test case
+
 
 class TestTupleCase(unittest.TestCase):
     def testlistvide(self):
-        self.assertEqual(activite1Tuple.tupleplusgrand([]),())
+        self.assertEqual(tuple_plus_grand([]), ())
 # test Unitaire sur la liste
 
 
 class TestTuple(unittest.TestCase):
     def testlistvide(self):
-        self.assertEqual(activite1Tuple.tupleplusgrand([]),())
+        self.assertEqual(tuple_plus_grand([]),())
     
     def test_list_seul(self):
-        self.assertEqual(activite1Tuple.tuple_plus_grand([(1,2,3)]),(1,2,3))
+        self.assertEqual(tuple_plus_grand([(1, 2, 3)]), (1, 2, 3))
     
     def test_tuple_vide(self):
-        self.assertEqual(activite1Tuple.tuple_plus_grand([(), (), ()]), ())
+        self.assertEqual(tuple_plus_grand([(), (), ()]), ())
     
     def test_tuple_multiple(self):
-        self.assertEqual(activite1Tuple.tuple_plus_grand([(1,), (2, 3), (4, 5, 6)]), (4, 5, 6))
+        self.assertEqual(tuple_plus_grand([(1,), (2, 3), (4, 5, 6)]), (4, 5, 6))
     
     def test_tuple_double(self):
-        self.assertEqual(activite1Tuple.tuple_plus_grand([(1, 2), (3, 4), (5, 6), (7, 8)]), (1, 2))
+        self.assertEqual(tuple_plus_grand([(1, 2), (3, 4), (5, 6), (7, 8)]), (1, 2))
 
 
 class MyTestRunner(unittest.TextTestRunner):
