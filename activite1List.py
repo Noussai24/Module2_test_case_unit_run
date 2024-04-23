@@ -13,9 +13,9 @@ def chainelist(list):
     return listFinal
 
 
-list = input("entrer une liste :").split()
+"""list = input("entrer une liste :").split()
 result = chainelist(list)
-print(f"votre liste unique est: {result}")
+print(f"votre liste unique est: {result}")"""
 
 # Test Unitaire :
 
@@ -37,6 +37,14 @@ class TestChainelist(unittest.TestCase):
 class TestRunnerList(unittest.TextTestRunner):
     def run(self, test):
         result = super().run(test)
-        print(f'Total des TestRunnerList: (result.testRun), Erreurs:{len(result.errors)},
-            Echecs:{len(result.failures)})
+        print(f"Total des TestRunnerList: {result.testsRun}, Erreurs:{len(result.errors)},Echecs:{len(result.failures)}")
 
+
+if __name__ == '__main__':
+    suite = unittest.TestSuite()
+    suite.addTest(TestChainelist('test_empty_list'))
+    suite.addTest(TestChainelist('test_single_element'))
+    suite.addTest(TestChainelist('test_duplicate_elements'))
+    suite.addTest(TestChainelist('test_mixed_types'))
+    runner = TestRunnerList(verbosity=2)
+    runner.run(suite)
