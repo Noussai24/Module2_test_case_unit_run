@@ -2,7 +2,8 @@ import unittest
 
 
 def tuple_plus_grand(list_tuples):
-    # definir un tuple vide 
+    # definir un tuple vide
+
     plus_grand_tuple = ()
     max_elements = 0
 
@@ -22,17 +23,17 @@ class TestTupleCase(unittest.TestCase):
 
 class TestTuple(unittest.TestCase):
     def test_list_vide(self):
-        self.assertEqual(tuple_plus_grand([]),())
-    
+        self.assertEqual(tuple_plus_grand([]), ())
+
     def test_list_seul(self):
         self.assertEqual(tuple_plus_grand([(1, 2, 3)]), (1, 2, 3))
-    
+
     def test_tuple_vide(self):
         self.assertEqual(tuple_plus_grand([(), (), ()]), ())
-    
+
     def test_tuple_multiple(self):
         self.assertEqual(tuple_plus_grand([(1,), (2, 3), (4, 5, 6)]), (4, 5, 6))
-    
+
     def test_tuple_double(self):
         self.assertEqual(tuple_plus_grand([(1, 2), (3, 4), (5, 6), (7, 8)]), (1, 2))
 
