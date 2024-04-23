@@ -12,7 +12,9 @@ def chainelist(list):
             listFinal.append(elt)
     return listFinal
 
-# test Unitaire sur la liste
+# test Unitaire: test suite
+
+
 class TestChainelist(unittest.TestCase):
     def test_empty_list(self):
         self.assertEqual(chainelist([]), [])
