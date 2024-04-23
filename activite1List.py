@@ -1,4 +1,6 @@
- 
+import unittest
+
+
 # Ennoncée et resolution
 def chainelist(list):
     # creation d'une nouvelle list
@@ -18,8 +20,6 @@ print(f"votre liste unique est: {result}")
 
 
 # test case
-import unittest
-
 def chainelist(lst):
     """ Crée une nouvelle liste sans doublons à partir de la liste donnée. """
     listFinal = []
@@ -36,6 +36,6 @@ class TestChainelistFunction(unittest.TestCase):
         """ Teste le fonctionnement avec une liste vide. """
         self.assertEqual(chainelist([]), [])
 
+
 if __name__ == '__main__':
     unittest.main()
- 

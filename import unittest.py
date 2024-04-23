@@ -32,6 +32,7 @@ class TestTuple(unittest.TestCase):
     
     def test_tuple_multiple(self):
         self.assertEqual(tuple_plus_grand([(1,), (2, 3), (4, 5, 6)]), (4, 5, 6))
+    
     def test_tuple_double(self):
         self.assertEqual(tuple_plus_grand([(1, 2), (3, 4), (5, 6), (7, 8)]), (1, 2))
 
@@ -50,4 +51,3 @@ if __name__ == '__main__':
     suite.addTest(TestTuple('test_tuple_vide'))
     suite.addTest(TestTuple('test_tuple_multiple'))
     suite.addTest(TestTuple('test_tuple_double'))
-
