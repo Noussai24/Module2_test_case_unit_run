@@ -28,7 +28,7 @@ class TestNombreGrand(unittest.TestCase):
     def test_nombre_positif(self, mock_input):
         # Tester avec des nombres positifs
         self.assertEqual(nombreGrand(), 10)
- 
+
     @patch('builtins.input', side_effect=[-2, 0, 5])
     def test_nombre_melange(self, mock_input):
         # Tester avec des nombres négatifs et positifs
