@@ -1,5 +1,4 @@
 import unittest
-
 def chainelist(list):
     # creation d'une nouvelle list
     listFinal = []
@@ -8,21 +7,6 @@ def chainelist(list):
         # si l'element de la liste initial n'existe pas dans la nouvelle list
         if elt not in listFinal:
             # on ajoute l'element dans la nouvelle liste
-            listFinal.append(elt)
-    return listFinal
-
-
-list = input("entrer une liste :").split()
-result = chainelist(list)
-print(f"votre liste unique est: {result}")
-
-
-# test case
-def chainelist(lst):
-    """ Crée une nouvelle liste sans doublons à partir de la liste donnée. """
-    listFinal = []
-    for elt in lst:
-        if elt not in listFinal:
             listFinal.append(elt)
     return listFinal
 
@@ -55,15 +39,21 @@ class TestChainelist(unittest.TestCase):
         self.assertEqual(chainelist(['a', 'b', 'b', 'c', 1, 1, 2, 2]), ['a', 'b', 'c', 1, 2])
 
 
-def suite():
+
+class TestRunnerList(unittest.TextTestRunner):
+    def run(self, test):
+        result = super().run(test)
+        print(f"Total des TestRunnerList: {result.testsRun}, Erreurs:{len(result.errors)},Echecs:{len(result.failures)}")
+
+
+if __name__ == '__main__':
     suite = unittest.TestSuite()
     suite.addTest(TestChainelist('test_empty_list'))
     suite.addTest(TestChainelist('test_single_element'))
     suite.addTest(TestChainelist('test_duplicate_elements'))
     suite.addTest(TestChainelist('test_mixed_types'))
+    runner = TestRunnerList(verbosity=2)
+    runner.run(suite)
     return suite
 
 
-if __name__ == '__main__':
-    runner = unittest.TextTestRunner()
-    runner.run(suite())
