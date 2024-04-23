@@ -1,6 +1,4 @@
 import unittest
-
-
 def chainelist(list):
     # creation d'une nouvelle list
     listFinal = []
@@ -13,11 +11,18 @@ def chainelist(list):
     return listFinal
 
 
-"""list = input("entrer une liste :").split()
-result = chainelist(list)
-print(f"votre liste unique est: {result}")"""
+class TestChainelistFunction(unittest.TestCase):
+    """ Suite de tests pour vérifier la fonction chainelist. """
 
-# Test Unitaire :
+    def test_empty_list(self):
+        """ Teste le fonctionnement avec une liste vide. """
+        self.assertEqual(chainelist([]), [])
+
+
+if __name__ == '__main__':
+    unittest.main()
+
+# test Unitaire: test suite
 
 
 class TestChainelist(unittest.TestCase):
@@ -34,6 +39,7 @@ class TestChainelist(unittest.TestCase):
         self.assertEqual(chainelist(['a', 'b', 'b', 'c', 1, 1, 2, 2]), ['a', 'b', 'c', 1, 2])
 
 
+
 class TestRunnerList(unittest.TextTestRunner):
     def run(self, test):
         result = super().run(test)
@@ -48,3 +54,6 @@ if __name__ == '__main__':
     suite.addTest(TestChainelist('test_mixed_types'))
     runner = TestRunnerList(verbosity=2)
     runner.run(suite)
+    return suite
+
+
