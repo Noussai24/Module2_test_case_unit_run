@@ -20,10 +20,12 @@ def nombreGrand():
 class TestNombreGrandFunction(unittest.TestCase):
     @patch('builtins.input', side_effect=[1, 7, 9])
     def test_nombre_positif(self, mock_input):
-        self.assertEqual(nombreGrand(),9)
+        self.assertEqual(nombreGrand(), 9)
+
     @patch('builtins.input', side_effect=[-3, -6, -7])
     def test_nombre_negatif(self, mock_input):
-        self.assertEqual(nombreGrand(),-3)
+        self.assertEqual(nombreGrand(), -3)
+
     @patch('builtins.input', side_effect=[-3, 0, 6])
     def test_nombre_melange(self, mock_input):
         self.assertEqual(nombreGrand(), 6)
@@ -34,10 +36,10 @@ class MyTestRunner(unittest.TextTestRunner):
         result = super().run(test)
         print(f"Total des tests: {result.testsRun}, Erreurs:{len(result.errors)},Echecs: {len(result.failures)}")
         return result
-    
+
 
 if __name__ == '__main__':
-    suite=unittest.TestSuite()
+    suite = unittest.TestSuite()
     suite.addTest(TestNombreGrandFunction('test_nombre'))
     suite.addTest(TestNombreGrandFunction('test_nombre_negatif'))
     suite.addTest(TestNombreGrandFunction('test_nombre_melange'))
